@@ -2,7 +2,7 @@
 {%import 'macros.html' as macro%}
 {%block content%}
 <div class="container">
-  <a class="btn btn-primary text-center text-danger" style="float:right" href="{{url_for('main.new_pitch',id=category.id)}}">Post Your Pitch!</a>></a>
+  <a class="btn btn-primary text-center text-danger" style="float:right" href="{{url_for('main.new_blog',id=category.id)}}">Post Your Blog!</a>></a>
 </div>
 <br>
 <br>
@@ -10,13 +10,13 @@
   <h3 class="text-center">{{category.name|upper}}</h3>
   <hr>
 </div>
-{%if pitches%}
+{%if blogs%}
 <div class="col-sm-12 col-md-8">
-  {{macro.displayPitches(pitches)}}
+  {{macro.displayBlogs(blogs)}}
 </div>
 {%else%}
 <div class="well">
-  <h4 style="padding:10%;text-align:center;font-size:50px">There is no pitch  in this category.</h4>
+  <h4 style="padding:10%;text-align:center;font-size:50px">There is no blog  in this category.</h4>
 </div>
 {%endif%}
 {%endblock%}
