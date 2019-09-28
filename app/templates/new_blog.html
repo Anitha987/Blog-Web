@@ -2,10 +2,10 @@
 {%import 'bootstrap/wtf.html'as wtf%}
 {%block content%}
 <div class="container" col-md-6 style="text-align:center">
-    <h3>{{category.name|upper}}Pitch</h3>
+    <h3>{{category.name|upper}}Blog</h3>
     <div class="well">
      <hr>
-     {{wtf.quick_form(_form)}}
+     {{wtf.quick_form(blog_form)}}
     </div>
 </div> 
 {%endblock%}
