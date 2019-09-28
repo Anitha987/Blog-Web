@@ -1,6 +1,6 @@
 from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
-from ..models import User,Pitch,Category,Comment,Vote
+from ..models import User,Blog,Category,Comment,Vote
 from .forms import UpdateProfile,PitchForm,CategoryForm,CommentForm
 from ..import db,photos
 from . import main 
@@ -31,38 +31,38 @@ def new_category():
 @main.route('/categories/<int:id>')    
 def category(id):
   category =Category.query.get(id)
-  pitches = Pitch.query.filter_by(category=id).all()
-  return render_template('category.html',pitches=pitches,category=category)
+  blogs = Blog.query.filter_by(category=id).all()
+  return render_template('category.html',blogs=blogs,category=category)
 
-@main.route('/categories/view_pitch/add/<int:id>',methods=['GET','POST'])
+@main.route('/categories/view_blog/add/<int:id>',methods=['GET','POST'])
 @login_required
-def new_pitch(id):
+def new_blog(id):
   '''
-  function to check pitches form and from the fields
+  function to check blogs form and from the fields
   '''
-  form = PitchForm()
+  form = BlogForm()
   category= Category.query.filter_by(id=id).first()
   if category is None:
     abort(404)
   if form.validate_on_submit():
     content = form.content.data
-    new_pitch= Pitch(content=content,category=category.id,user_id=current_user.id)
-    new_pitch.save_pitch()
+    new_blog= Blog(content=content,category=category.id,user_id=current_user.id)
+    new_blog.save_blog()
     return redirect(url_for('.category',id=category.id))
-  title='New Pitch'
-  return render_template('new_pitch.html',title=title,pitch_form = form,category = category)
-@main.route('/categories/view_pitch/<int:id>',methods=['GET','POST'])
+  title='New Blog'
+  return render_template('new_blog.html',title=title,blog_form = form,category = category)
+@main.route('/categories/view_blog/<int:id>',methods=['GET','POST'])
 @login_required
-def view_pitch(id):
+def view_blog(id):
   '''
-  function htat returns a single pitch for comment to be added
+  function that returns a single blog for comment to be added 
   '''
   print (id)
-  pitches=Pitch.query.get(id)
-  if pitches is None:
+  blogs=Blog.query.get(id)
+  if blogs is None:
     abort(404)
   comment=Comments.get_comments(id)
-  return return_template('pitch.html',pitches=pitches,comment=comment,category_id=id)
+  return return_template('blog.html',blogs=blogs,comment=comment,category_id=id)
 @main.route('/user/<uname>')
 def profile(uname):
   user = User.query.filter_by(username = uname).first()
