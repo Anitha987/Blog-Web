@@ -13,12 +13,13 @@ class User(UserMixin, db.Model):
   username = db.Column(db.String(255),index=True)
   email= db.Column(db.String(225),unique=True,index=True)
   pass_secure=db.Column(db.String(255))
-  pitches= db.relationship('Pitch',backref='user',lazy = "dynamic")
+  blogs= db.relationship('Blog',backref='user',lazy = "dynamic")
   comments= db.relationship('Comment',backref='user',lazy = "dynamic")
   bio = db.Column(db.String(255))
   profile_pic_path = db.Column(db.String())
   password_hash = db.Column(db.String(255))
   photoprofiles = db.relationship('PhotoProfile',backref='user',lazy = "dynamic")
+
   @property
   def password(self):
       raise AttributeError('You cannot read the password attribute')
@@ -34,8 +35,8 @@ class User(UserMixin, db.Model):
   def __repr__(self):
     return f'User {self.username}'
 
-class Pitch(db.Model):
-  __tablename__ = 'pitches'
+class Blog(db.Model):
+  __tablename__ = 'blogs'
 
   id = db.Column(db.Integer,primary_key = True)
   name = db.Column(db.String(255))
@@ -44,8 +45,8 @@ class Pitch(db.Model):
   category = db.Column(db.Integer,db.ForeignKey('categories.id'))
   vote = db.Column(db.Integer)
   user_id= db.Column(db.Integer,db.ForeignKey('users.id'))
-  comments = db.relationship('Comment',backref = 'pitches',lazy="dynamic")
-  votes = db.relationship('Vote',backref = 'pitches',lazy="dynamic")
+  comments = db.relationship('Comment',backref = 'blogs',lazy="dynamic")
+  votes = db.relationship('Vote',backref = 'blogs',lazy="dynamic")
 
   def __repr__(self):
     return f'User {self.name}'
@@ -55,9 +56,9 @@ class Pitch(db.Model):
     db.session.commit()  
   
   @classmethod
-  def get_pitches(cls):
-    pitch = pitch.query.all()
-    return pitches  
+  def get_blogs(cls):
+    blog = blog.query.all()
+    return blogs  
 
 class Category(db.Model): 
   __tablename__= 'categories' 
@@ -78,7 +79,7 @@ class Comment(db.Model):
   __tablename__='comments'
   id = db.Column(db.Integer,primary_key=True)
   user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-  pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
+  blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
   votes = db.relationship('Vote',backref = 'comments', lazy = "dynamic")
 
   def save_comment(self):
@@ -96,7 +97,7 @@ class Vote(db.Model):
   id = db.Column(db.Integer,primary_key=True)
   name = db.Column(db.String(225))
   vote=db.Column(db.Integer)
-  pitch_id=db.Column(db.Integer,db.ForeignKey('pitches.id'))
+  blog_id=db.Column(db.Integer,db.ForeignKey('blogs.id'))
   comment_id=db.Column(db.Integer,db.ForeignKey('comments.id'))
 
   def save_vote(self):
@@ -105,8 +106,8 @@ class Vote(db.Model):
 
   
   @classmethod
-  def get_votes(cls,user_id,pitches_id):
-    vote = vote.query.filter_by(user_id=user_id,pitches_id=pitches_id).all()
+  def get_votes(cls,user_id,blogs_id):pitch
+    vote = vote.query.filter_by(user_id=user_id,blogs_id=blogs_id).all()
     return votes  
 class PhotoProfile(db.Model):
   __tablename__='photoprofiles'

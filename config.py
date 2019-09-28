@@ -5,7 +5,7 @@ class Config :
   '''
   UPLOADED_PHOTOS_DEST ='app/static/photos'
   SECRET_KEY ="anitha"
-  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:1234@localhost/pitch'
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:1234@localhost/blog'
 
   #  email configurations
   MAIL_SERVER = 'smtp.googlemail.com'
@@ -26,7 +26,7 @@ class DevConfig(Config):
   '''
   DEBUG = True
 class TestConfig(Config):
-  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:1234@localhost/pitch_test'
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:1234@localhost/blog_test'
 config_options = {
   'development':DevConfig,
   'production':ProdConfig,
