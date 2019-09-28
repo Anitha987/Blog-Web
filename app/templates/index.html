@@ -1,0 +1,37 @@
+{%extends 'base.html' %}
+{% import 'macros.html' as macro%}
+{% import 'bootstrap/wtf.html'as wtf%}
+
+{%block styles%}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{%endblock%}
+
+{%block content%}
+<br>
+    <div class="container-fluid" style="font-family:'Russo One',sans-serif;text-align: center">
+      <div class="row">
+        <div class="container" id="block-text">
+          <br>
+          <div class="annitha" style="padding-bottom: 10%;text-align: center">
+            <img src="/static/photos/pitch.jpg" width="300"style="border-radius:50%">
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="alexiane" style="background-color:RGB(109, 177, 180  );font-size:20px;float:left;border-radius:230px">
+            <p><strong>In life,you only have 60 seconds to impress someone.One minute can make or break you.We make sure that you use your 1 minuteto actually say something meaningful through this application.</strong></p>
+          </div>
+        </div>
+       </div>
+      <div class="container">
+        <br>
+        <h2><strong>Pitch Categories</strong></h2>
+        <strong style="font-size:30px;background-color: rgb(245, 250, 248);">{{macro.displayCategoryList(category)}}</strong>
+        <br>
+        <br>
+        <h3 class="add-category"><a class="btn btn-primary"href="/add/category"style="background-color:#002457;float:right"><span aria-hidden="true">Add a category!</span></a></h3>
+      </div>
+    </div>
+  </body>
+    {%endblock%}

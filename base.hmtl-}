@@ -1,0 +1,16 @@
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-----------+----------+----------+-------------+-------------+-----------------------
+ alexia    | wecode   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ anitha    | wecode   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ pitch     | wecode   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ school    | wecode   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ watchlist | wecode   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ wecode    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+(9 rows)
+
