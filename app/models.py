@@ -106,7 +106,7 @@ class Vote(db.Model):
 
   
   @classmethod
-  def get_votes(cls,user_id,blogs_id):pitch
+  def get_votes(cls,user_id,blogs_id):
     vote = vote.query.filter_by(user_id=user_id,blogs_id=blogs_id).all()
     return votes  
 class PhotoProfile(db.Model):

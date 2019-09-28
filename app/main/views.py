@@ -1,7 +1,7 @@
 from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
 from ..models import User,Blog,Category,Comment,Vote
-from .forms import UpdateProfile,PitchForm,CategoryForm,CommentForm
+from .forms import UpdateProfile,BlogForm,CategoryForm,CommentForm
 from ..import db,photos
 from . import main 
 @main.route('/')
@@ -17,7 +17,7 @@ def index():
 @login_required
 def new_category():
   '''
-  viewnew group route function that returns a page with a formto create a category
+  viewnew group route function that returns a page with a form to create a category
   '''
   form = CategoryForm()
   if form.validate_on_submit():
