@@ -8,6 +8,15 @@
 {%endblock%}
 
 {%block content%}
+<body>
+  <!-- different quotes section  -->
+  <h3> Different Quotes</h3>
+   <ul>
+      {% for different_quote in different %}
+          <li>{{ different_quote.title}}</li>
+      {% endfor %}
+  </ul>
+</body>
 <br>
     <div class="container-fluid" style="font-family:'Russo One',sans-serif;text-align: center">
       <div class="row">
