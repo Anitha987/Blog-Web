@@ -4,6 +4,21 @@ from ..models import User,Blog,Category,Comment,Vote
 from .forms import UpdateProfile,BlogForm,CategoryForm,CommentForm
 from ..import db,photos
 from . import main 
+from request import get_quotes
+
+@app.route('/')
+def index():
+
+  '''
+  View root page function that returns the index page and its data
+  '''
+
+  # Getting different quote
+  different_quotes = get_quotes('different')
+  print(different_quotes)
+  title = 'Home - Welcome to the Blog-web page'
+  return render_template('index.html', title = title,different = different_quotes)
+
 @main.route('/')
 def index():
   '''
