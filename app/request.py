@@ -1,6 +1,6 @@
-from app import app
+# from app import app
 import urllib.request,json
-from models import quote
+from .models import Quote
 
 #Getting api key
 api_key=app.config['QUOTE_API_KEY']

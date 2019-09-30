@@ -4,7 +4,7 @@ from ..models import User,Blog,Category,Comment,Vote
 from .forms import UpdateProfile,BlogForm,CategoryForm,CommentForm
 from ..import db,photos
 from . import main 
-from request import get_quotes
+from ..request import get_quotes
 
 @app.route('/')
 def index():

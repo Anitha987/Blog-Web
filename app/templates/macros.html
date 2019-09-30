@@ -5,7 +5,14 @@
   </div>
   
   {% endfor %}
-{% endmacro %}    
+{% endmacro %} 
+{% macro displayQuoteList(quote_list) %}
+
+    {% for quote in quote_list %}
+        <li>{{ quote.title}}</li>
+    {% endfor %}
+
+{% endmacro %}   
 {%macro displayBlogs(blog_list)%}
 {%for blogs in blog_list%}
 <div class="col-md-12">

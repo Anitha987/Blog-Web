@@ -1,7 +1,8 @@
-class Movie:
+class Quote:
     '''
-    Movie class to define Movie Objects
+    Quote class to define Quote Objects
     '''
+
 
     def __init__(self,id,title,author,url):
         self.id =id
