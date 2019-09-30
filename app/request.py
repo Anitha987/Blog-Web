@@ -5,7 +5,7 @@ from .models import Quote
 #Getting api key
 api_key=app.config['QUOTE_API_KEY']
 
-# Quote= quote.Quote
+Quote= quote.Quote
 
 # Getting the movie base url
 base_url = app.config["QUOTE_API_BASE_URL"]

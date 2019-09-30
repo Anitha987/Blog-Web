@@ -6,6 +6,17 @@ from .import db,login_manager
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+class Quote:
+  '''
+  Quote class to define Quote Objects
+  '''
+
+
+  def __init__(self,id,title,author,url):
+    self.id =id
+    self.title = title
+    self.author = author
+    self.url = url    
 
 class User(UserMixin, db.Model):
   __tablename__ = 'users'
