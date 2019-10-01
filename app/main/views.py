@@ -1,33 +1,24 @@
 from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
-from ..models import User,Blog,Category,Comment,Vote
+from ..models import User,Blog,Category,Comment
 from .forms import UpdateProfile,BlogForm,CategoryForm,CommentForm
 from ..import db,photos
 from . import main 
-from ..request import get_quotes
+from ..requests import get_quotes
 
-@app.route('/')
+@main.route('/')
 def index():
 
   '''
   View root page function that returns the index page and its data
   '''
 
-  # Getting different quote
-  different_quotes = get_quotes('different')
-  print(different_quotes)
-  title = 'Home - Welcome to the Blog-web page'
-  return render_template('index.html', title = title,different = different_quotes)
+  
+  blogs=Blog.query.all()
+  quote = get_quotes(category)
+  
+  return render_template('index.html',quote=quote,blogs=blogs)
 
-@main.route('/')
-def index():
-  '''
-  view root page function that returns the index page and its data
-  '''
-  # category = Category.query.all()
-  category = Category.get_categories()
-
-  return render_template('index.html',category = category)
 @main.route('/add/category',methods=['GET','POST'])
 @login_required
 def new_category():

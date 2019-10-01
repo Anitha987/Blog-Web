@@ -5,18 +5,16 @@ from .import db,login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+  return User.query.get(int(user_id))
 class Quote:
   '''
   Quote class to define Quote Objects
   '''
 
-
-  def __init__(self,id,title,author,url):
+  def __init__(self,id,author,quote):
     self.id =id
-    self.title = title
     self.author = author
-    self.url = url    
+    self.quote= quote    
 
 class User(UserMixin, db.Model):
   __tablename__ = 'users'
@@ -51,13 +49,12 @@ class Blog(db.Model):
 
   id = db.Column(db.Integer,primary_key = True)
   name = db.Column(db.String(255))
-  # title=db.Column(db.String(255))
   content=db.Column(db.String(255))
   category = db.Column(db.Integer,db.ForeignKey('categories.id'))
   vote = db.Column(db.Integer)
   user_id= db.Column(db.Integer,db.ForeignKey('users.id'))
   comments = db.relationship('Comment',backref = 'blogs',lazy="dynamic")
-  votes = db.relationship('Vote',backref = 'blogs',lazy="dynamic")
+  
 
   def __repr__(self):
     return f'User {self.name}'
@@ -91,7 +88,7 @@ class Comment(db.Model):
   id = db.Column(db.Integer,primary_key=True)
   user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
   blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
-  votes = db.relationship('Vote',backref = 'comments', lazy = "dynamic")
+
 
   def save_comment(self):
     db.session.add(self)
@@ -103,23 +100,6 @@ class Comment(db.Model):
     comment = comment.query.all()
     return comments
 
-class Vote(db.Model):
-  __tablename__='votes'
-  id = db.Column(db.Integer,primary_key=True)
-  name = db.Column(db.String(225))
-  vote=db.Column(db.Integer)
-  blog_id=db.Column(db.Integer,db.ForeignKey('blogs.id'))
-  comment_id=db.Column(db.Integer,db.ForeignKey('comments.id'))
-
-  def save_vote(self):
-    db.session.add(self)
-    db.session.commit()
-
-  
-  @classmethod
-  def get_votes(cls,user_id,blogs_id):
-    vote = vote.query.filter_by(user_id=user_id,blogs_id=blogs_id).all()
-    return votes  
 class PhotoProfile(db.Model):
   __tablename__='photoprofiles'
   id=db.Column(db.Integer,primary_key=True)

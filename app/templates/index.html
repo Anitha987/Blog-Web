@@ -10,11 +10,11 @@
 {%block content%}
 <body>
   <!-- different quotes section  -->
-  <h3> Different Quotes</h3>
+ 
    <ul>
-      {% for different_quote in different %}
-          <li>{{ different_quote.title}}</li>
-      {% endfor %}
+      
+      <!-- <li>{{quote.title}}</li> -->
+      
   </ul>
 </body>
 <br>
@@ -23,13 +23,12 @@
         <div class="container" id="block-text">
           <br>
           <div class="annitha" style="padding-bottom: 10%;text-align: center">
-            <!-- <img src="/static/photos/pitch.jpg" width="300"style="border-radius:50%"> -->
+            <img src="/static/photos/blog.jpg" width="300"style="border-radius:50%">
           </div>
           <br>
           <br>
           <br>
           <div class="alexiane" style="background-color:RGB(109, 177, 180  );font-size:20px;float:left;border-radius:230px">
-            <!-- <p><strong>In life,you only have 60 seconds to impress someone.One minute can make or break you.We make sure that you use your 1 minuteto actually say something meaningful through this application.</strong></p> -->
           </div>
         </div>
        </div>
@@ -41,6 +40,19 @@
         <br>
         <h3 class="add-category"><a class="btn btn-primary"href="/add/category"style="background-color:#002457;float:right"><span aria-hidden="true">Add a category!</span></a></h3>
       </div>
+      <h3><strong>Quotes</strong> </h3>
+      <div class="col-md-12">
+        <div class="container">
+          <div class="jumbotron">
+            <div class="alexiane" style="background-color:RGB(201, 208, 205 );font-size:20px;border-radius:2300px">
+            <p>{{quote.quote}}</p>
+            <p>{{quote.author}}</p>
+            <!-- <p>{{quote.id}}</p> -->
+          </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </body>

@@ -4,10 +4,11 @@ class Config :
   Genarate configuration parent class
   '''
   UPLOADED_PHOTOS_DEST ='app/static/photos'
-  QUOTE_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/quotes/32'
+  QUOTE_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
+
   SECRET_KEY ="anitha"
   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:1234@localhost/blog'
-
+  
   #  email configurations
   MAIL_SERVER = 'smtp.googlemail.com'
   MAIL_PORT = 587
