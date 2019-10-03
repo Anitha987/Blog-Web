@@ -1,6 +1,6 @@
 from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
-from ..models import User,Blog,Category,Comment
+from ..models import User,Blog,Category,Comment,Subcription
 from .forms import UpdateProfile,BlogForm,CategoryForm,CommentForm
 from ..import db,photos
 from . import main 
@@ -107,11 +107,12 @@ def subscribe():
     db.session.commit()
     return redirect(url_for('main.index'))
   return render_template('subscribe.html',form=form) 
+  
 
 @main.route('/delete/<int:id>',methods = ['GET','POST'])  
 def delete(id):
-  blogs =Blog.get_blog(id)
-  db.session.delete(blog)
+  blogs =Blog.query.filter_by(id=id).first()
+  db.session.delete(blogs)
   db.session.commit()
   return redirect(url_for('.index')) 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
