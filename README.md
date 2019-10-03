@@ -3,7 +3,7 @@
 ###{Blog-Web}
 
 ##Description
- Blog-Web is an application that helps the user to express him or herself writing .
+This is a personal blogging website where you can create and share your opinions and other users can read and comment on them.
 
 ##Behaviour of the application
 The user visits the app url in any browser and interacts with the application

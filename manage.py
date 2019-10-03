@@ -3,9 +3,8 @@ from app.models import User,Blog,Category,Comment
 from flask_migrate import Migrate,MigrateCommand
 from flask_script import Manager,Server
 
-# app = create_app('production')
 # app = create_app('test')
-app = create_app('development')
+app = create_app('production')
 migrate=Migrate(app,db)
 manager = Manager(app)
 manager.add_command('db',MigrateCommand)

@@ -97,7 +97,7 @@ def profile(uname):
 
 @main.route('/subscribe/',methods = ['GET','POST'])
 def subscribe():
-  '''
+  '''   
   function thatenables one to make a subcribe on the blog
   '''
   form=SubscribeForm()
@@ -107,7 +107,7 @@ def subscribe():
     db.session.commit()
     return redirect(url_for('main.index'))
   return render_template('subscribe.html',form=form) 
-  
+
 
 @main.route('/delete/<int:id>',methods = ['GET','POST'])  
 def delete(id):
