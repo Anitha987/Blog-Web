@@ -1,8 +1,23 @@
 {%extends 'base.html'%}
 {%import 'macros.html' as macro%}
+{%import 'bootstrap/wtf.html'as wtf %}
 {%block content%}
 <div class="container" col-md-6 style="text-align:center">
   <h3 class="text-center">{{category.name|upper}}Blog</h3>
   <a class="btn btn-primary text-center text-danger" href="/category/view_blog"></a>
+  <div class="container" style="font-family:'Indie Flower',cursive">
+  <div class="row">
+    <p>Posted on{{date}} by {{blogs.user.username|capitalise}}</p>
+  </div>
+  <div class="row">
+    <h4 style="padding:20px">Comments</h4>
+    <hr>
+    {% if current_user.is_authenticated %}
+      {{ wtf.quick_form(comment_form)}}
+    {% endif %}
+    {{macro.displayComments(Comments)}}  
+  </div>
+</div>
 
-  {% endblock %}
+
+  {% endblock %} 

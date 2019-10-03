@@ -20,10 +20,20 @@
     <div class="row">
       <p>{{blogs.name|upper}}</p>
       <div class="col-md-10 col-sm-12">
-        <h3>{{blogs.content}}</h3>
+        <h3>{{blogs.content|truncate(80)}}</h3>
+        <p>Written by:{{blogs.user.username}}
+        <a href="/delete_blogs/{{blogs.id}}" class="btn btn-primary pull-right" style="margin-bottom:60px">Delete</a>
       </div>
     </div>
   </div>
 </div>
 {% endfor %}
 {% endmacro %}  
+{%macro displayComment(comments_list)%}
+{%for comment in comments_list%}
+<div class="col-md-12">
+  <h5>{{comment.user.username}}</h5>
+  <p>{{comment.comment}}</p>
+</div>
+{% endfor %}
+{% endmacro %}

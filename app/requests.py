@@ -36,22 +36,3 @@ def get_quotes(category):
       quote_results = Quote(id,author,quote)
   return quote_results
 
-# def process_results(quote_list):
-#   '''
-#   Function  that processes the quote result and transform them to a list of Objects
-
-#   Args:
-#     quote_list: A list of dictionaries that contain quote details
-
-#   Returns :
-#     quote_results: A list of quote objects
-#   '''
-#   quote_results = []
-#   for quote_item in quote_list:
-#     id = quote_item.get('id')
-#     author = quote_item.get('author')
-#     quote= quote_item.get('quote')
-
-  
-
-#   return quote_results  

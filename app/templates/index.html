@@ -9,11 +9,8 @@
 
 {%block content%}
 <body>
-  <!-- different quotes section  -->
  
    <ul>
-      
-      <!-- <li>{{quote.title}}</li> -->
       
   </ul>
 </body>
@@ -35,7 +32,7 @@
       <div class="container">
         <br>
         <h2><strong>Blog Posts</strong></h2>
-        <strong style="font-size:30px;background-color: rgb(245, 250, 248);">{{macro.displayCategoryList(category)}}</strong>
+        <strong style="font-size:30px;background-color: rgb(245, 250, 248);">{{macro.displayCategoryList(new_category)}}</strong>
         <br>
         <br>
         <h3 class="add-category"><a class="btn btn-primary"href="/add/category"style="background-color:#002457;float:right"><span aria-hidden="true">Add a category!</span></a></h3>
@@ -47,7 +44,6 @@
             <div class="alexiane" style="background-color:RGB(201, 208, 205 );font-size:20px;border-radius:2300px">
             <p>{{quote.quote}}</p>
             <p>{{quote.author}}</p>
-            <!-- <p>{{quote.id}}</p> -->
           </div>
           </div>
         </div>

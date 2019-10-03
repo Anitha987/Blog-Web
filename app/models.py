@@ -1,6 +1,7 @@
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from .import db,login_manager
+from datetime import datetime
 
 
 @login_manager.user_loader
@@ -51,7 +52,7 @@ class Blog(db.Model):
   name = db.Column(db.String(255))
   content=db.Column(db.String(255))
   category = db.Column(db.Integer,db.ForeignKey('categories.id'))
-  vote = db.Column(db.Integer)
+  posted = db.Column(db.DateTime,default=datetime.utcnow)
   user_id= db.Column(db.Integer,db.ForeignKey('users.id'))
   comments = db.relationship('Comment',backref = 'blogs',lazy="dynamic")
   
@@ -86,6 +87,7 @@ class Category(db.Model):
 class Comment(db.Model):
   __tablename__='comments'
   id = db.Column(db.Integer,primary_key=True)
+  comment =db.Column(db.String(1000))
   user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
   blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
 
@@ -99,9 +101,20 @@ class Comment(db.Model):
   def get_comments(cls):
     comment = comment.query.all()
     return comments
+  def __repr__(self):
+    return f'Comment{self.comment}' 
+
+class Subcription(UserMixin,db.Model):
+  __tablename__ = 'subcription'
+  id = db.Column(db.Integer,primary_key=True)
+  email = db.Column(db.String(255),unique=True,index=True,nullable=False) 
+  def __repr__(self):
+    return f'{self.email}' 
+    
 
 class PhotoProfile(db.Model):
   __tablename__='photoprofiles'
   id=db.Column(db.Integer,primary_key=True)
   pic_path = db.Column(db.String())
   user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
+
